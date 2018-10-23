@@ -1,0 +1,28 @@
+.container{
+    width: 80%;
+    align-content: center;
+}
+
+.jumbotron{
+    text-align: center;
+}
+
+.jumbotron h1{
+    font-weight: bold;    
+}
+
+.jumbotron p{
+    font-size: 12px;
+}
+
+.featured-img{
+    border-left: 1px;
+}
+
+.row {
+    /* padding: 5px; */
+}
+
+table {
+    font-size: 12px;
+}

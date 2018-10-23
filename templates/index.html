@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    </head>
+
+    <body>
+        <div class = "container">
+            <!-- Begin row one -->
+            <div class = "row">
+                <!-- Begin col one of one, row one -->
+                <div class = "col-12">
+                    <!-- Begin jumbotron -->
+                    <div class="jumbotron">
+                            <h1 class="display-4">Mission to Mars</h1>
+                            <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
+                            <p>Data last scraped on </p>
+                    </div>  <!-- end jumbotron -->
+
+                    <h3>Latest Mars News</h3>
+                    <h5>{{ mars_dict.mars_news_title }}</h5>
+                    <p>{{ mars_dict.mars_news_paragraph }}</p>
+
+                </div>  <!-- end col one of one, row one  -->
+            </div>  <!-- end row one -->
+
+            <!-- Begin row two -->
+            <div class = "row">
+                <!-- Begin col one of two, row two -->
+                <div class = "col-8">
+                    <h3>Featured Mars Image</h3>
+                    <div class = "featured-image">
+                        <img src = "{{ mars_dict.jpl_featured_image }}" width = 500px>
+                    </div>
+                </div>  <!-- end col one of two, row two -->
+
+                <!-- Begin col two of two, row two -->
+                <div class = 'col-4'>
+
+                    <!-- Begin within col row one -->
+                    <div class = 'row'>
+                        
+                        <!-- Begin card -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Current Weather on Mars</h5>
+                                <p class="card-text">{{ mars_dict.mars_weather }}</p>
+                            </div>
+                        </div>  <!-- end card -->
+
+                    </div>  <!-- end within col row one -->
+                    <p></p>
+                    <!-- Begin within col row two -->
+                    <div class = "row">
+                        <h5>Mars Facts</h5>
+                        {{ mars_dict.mars_table | safe }}
+                    </div>  <!-- end within col row two -->
+
+                </div>  <!-- end col two of two, row two -->
+            </div>  <!-- end row two -->
+
+            <!-- Begin row three -->
+            <div class = "row">
+                <h3>Mars Hemispheres</h3>
+                <hr><br>
+                {% for img in mars_dict.hemisphere_image_urls %}
+                <div class = "col-3">
+                    <img src = "{{ img.img_url }}" width = 200px>
+                    <h4>{{ img.title }}</h4>
+                </div>
+                {% endfor %}
+            </div>  <!-- end row three -->
+        </div>  <!-- end container -->
+    </body>
+</html>

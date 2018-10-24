@@ -3,6 +3,9 @@
     align-content: center;
 }
 
+.col-12, .col-8, .col-4{
+    padding: 10px;
+}
 .jumbotron{
     text-align: center;
 }
@@ -15,14 +18,15 @@
     font-size: 12px;
 }
 
-.featured-img{
-    border-left: 1px;
-}
-
-.row {
-    /* padding: 5px; */
-}
-
 table {
-    font-size: 12px;
+    font-size: 10px;
+}
+
+.hemispheres{
+    text-align: center;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }

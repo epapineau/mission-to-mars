@@ -16,9 +16,13 @@ def scrape():
     mars_news = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
     browser.visit(mars_news)
     html = browser.html
-    soup = bs(html, 'html.parser')
-    news_title = soup.find_all('div', class_ = 'image_and_description_container')[0].h3.text
-    news_p = soup.find_all('div', class_ = 'image_and_description_container')[0].text
+    try:
+        soup = bs(html, 'html.parser')
+        news_title = soup.find_all('div', class_ = 'image_and_description_container')[0].h3.text
+        news_p = soup.find_all('div', class_ = 'image_and_description_container')[0].text
+    except:
+        news_title = "NASA Mars News Headline unavailable."
+        news_p = "NASA Mars News content unavailable."
 
     # Get featured image from JPL
     print('Get featured image from JPL')
@@ -55,7 +59,10 @@ def scrape():
     # Get mars facts table
     print('Get mars facts table')
     tables = pd.read_html("https://space-facts.com/mars/")
-    mars_table_html = tables[0].to_html()
+    table = tables[0].rename(columns = {0: 'description',
+                                        1: 'value'})
+    table = table.set_index('description')
+    mars_table_html = table.to_html()
 
     # Get URLs for Mars hemisphere images
     hemisphere_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -96,5 +103,3 @@ def scrape():
                 'hemisphere_image_urls': hemisphere_image_urls}
 
     return mars_dict
-
-print(scrape())

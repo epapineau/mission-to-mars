@@ -15,10 +15,10 @@
                 <!-- Begin col one of one, row one -->
                 <div class = "col-12">
                     <!-- Begin jumbotron -->
-                    <div class="jumbotron">
-                            <h1 class="display-4">Mission to Mars</h1>
-                            <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
-                            <p>Data last scraped on </p>
+                    <div class = "jumbotron">
+                            <h1 class = "display-4">Mission to Mars</h1>
+                            <a class = "btn btn-primary btn-lg" href = scraper role = "button">Scrape New Data</a>
+                            <p>Data last scraped on {{ mars_dict.scrape_date }}</p>
                     </div>  <!-- end jumbotron -->
 
                     <h3>Latest Mars News</h3>
@@ -55,8 +55,8 @@
                     </div>  <!-- end within col row one -->
                     <p></p>
                     <!-- Begin within col row two -->
+                    <h5>Mars Facts</h5>
                     <div class = "row">
-                        <h5>Mars Facts</h5>
                         {{ mars_dict.mars_table | safe }}
                     </div>  <!-- end within col row two -->
 
